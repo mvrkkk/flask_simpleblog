@@ -1,19 +1,29 @@
-from flask import Flask
+from flask import Flask, render_template
 import pandas as pd
 
-sys.path.append('../')
 app = Flask(__name__)
 
+posts = [
+    {
+        'author': 'Author 1',
+        'title': 'Blog post 1',
+        'content': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+    },
+    {
+        'author': 'Author 2',
+        'title': 'Blog post 2',
+        'content': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+    }
+]
+
 @app.route('/')
+@app.route('/home')
 def index():
-    return """
-    <h1>Hello world!</h1>
-    <a href="/about"> Go about </a> 
-    """
+    return render_template('index.html')
 
 @app.route('/about')
 def about():
-    return "<h1>About page!</h1>"
+    return render_template('about.html')
 
 if __name__ == '__main__':
     app.run(debug = True)
