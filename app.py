@@ -1,6 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 from datetime import datetime
-import pandas as pd
 
 app = Flask(__name__)
 
